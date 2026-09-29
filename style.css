@@ -24,3 +24,45 @@ input,textarea,[contenteditable="true"]{cursor:text}
 .portfolio-nav b span{color:inherit}
 .about-body,.work-heading>p,.project-info,.timeline-item>div,.extra-note p,.contact-grid>div,.contact-card{text-align:left}
 .section-heading,.hero h1,.about-body p,.project-info p,.timeline-item p,.contact-intro{ text-align:left }
+.extra-note ul{margin:0;padding:0;display:grid;gap:9px;list-style:none}
+.extra-note li{position:relative;padding-left:17px;font:italic 15px/1.55 var(--serif);color:#e0e4d8;text-align:left}
+.extra-note li::before{content:'•';position:absolute;left:0;color:var(--lime);font-style:normal}
+
+/* Keep each marquee cycle viewport-wide so no empty strip enters the loop. */
+.ticker-track{width:max-content;min-width:0;gap:0;animation-name:marquee;animation-duration:30s}
+.ticker-group{flex:0 0 100vw;width:100vw;display:flex;align-items:center;justify-content:space-around;gap:24px;white-space:nowrap}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media(max-width:640px){.ticker-group{gap:12px;font-size:8px}}
+.about-stats{grid-template-columns:repeat(3,1fr)}
+
+/* Full-width résumé panel with one action and Drive links revealed on demand. */
+.resume-options{width:100%;margin:18px 0 0;padding:22px;grid-template-columns:1fr auto;box-sizing:border-box}
+.resume-options .resume-intro{grid-column:1;grid-row:1}
+.resume-options h3{margin-top:7px}
+.resume-toggle{grid-column:2;grid-row:1;min-width:190px;min-height:52px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:24px;border:0;border-radius:99px;background:var(--lime);color:var(--ink);font:600 13px var(--sans);cursor:pointer}
+.resume-toggle span{font-size:17px;transition:transform .2s ease}
+.resume-toggle[aria-expanded="true"] span{transform:rotate(180deg)}
+.resume-links{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:5px}
+.resume-links[hidden]{display:none!important}
+.resume-links a{padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #ffffff48;color:#edf0e7;font-size:12px;transition:background .2s,color .2s}
+.resume-links a span{color:var(--lime)}
+.resume-links a:hover{background:var(--lime);color:var(--ink)}
+.resume-links a:hover span{color:var(--green)}
+@media(max-width:640px){.resume-options{grid-template-columns:1fr;padding:16px}.resume-options .resume-intro,.resume-toggle,.resume-links{grid-column:1;grid-row:auto}.resume-toggle{width:100%;margin-top:9px}.resume-links{grid-template-columns:1fr}}
+
+/* Give the green Journey panel more presence while keeping its content aligned. */
+.journey.section-wrap{width:min(1320px,calc(100% - 48px))}
+@media(max-width:640px){.journey.section-wrap{width:calc(100% - 28px)}}
+
+/* Keep the Journey content at its original reading width inside the wider green panel. */
+.journey>.section-kicker,.journey>.journey-grid,.journey>.resume-options,.journey>.extra-note{width:100%;max-width:1120px;margin-left:auto;margin-right:auto}
+.journey>.resume-options{margin-top:18px}
+@media(max-width:640px){.journey.section-wrap{width:calc(100% - 38px)}}
+
+/* Native SVG arrows and a compact, higher-contrast Developer brand mark. */
+svg.arrow-icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.header-wordmark{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.brand-mark{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:11px;background:var(--green);color:var(--lime)!important;box-shadow:0 3px 9px #243b2c25}
+.brand-mark svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.header-wordmark .brand-name{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+@media(max-width:640px){.brand-mark{width:32px;height:32px;flex-basis:32px;border-radius:10px}.header-wordmark{gap:7px}.header-wordmark .brand-name{font-size:10px}}
