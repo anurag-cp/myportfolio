@@ -3,6 +3,14 @@
 const progressBar = document.querySelector('.scroll-progress span');
 const revealItems = document.querySelectorAll('.reveal');
 const navLinks = [...document.querySelectorAll('.desktop-nav a')];
+const resumeToggle = document.querySelector('.resume-toggle');
+const resumeLinks = document.querySelector('#resume-links');
+
+resumeToggle?.addEventListener('click', () => {
+  const isExpanded = resumeToggle.getAttribute('aria-expanded') === 'true';
+  resumeToggle.setAttribute('aria-expanded', String(!isExpanded));
+  resumeLinks.hidden = isExpanded;
+});
 
 navLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
